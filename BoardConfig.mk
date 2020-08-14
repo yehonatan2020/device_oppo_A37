@@ -13,6 +13,8 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+DEVICE_PATH := device/oppo/A37
+
 # Bootloader
 TARGET_BOOTLOADER_BOARD_NAME := MSM8916
 TARGET_BOARD_PLATFORM := msm8916
@@ -62,6 +64,7 @@ BOARD_SUPPRESS_EMMC_WIPE := true
 TARGET_EXFAT_DRIVER := sdfat
 TARGET_RECOVERY_FSTAB := device/oppo/A37/rootdir/etc/fstab.qcom
 TARGET_USES_MKE2FS := true
+TARGET_FS_CONFIG_GEN := $(DEVICE_PATH)/config.fs
 
 # Dexpreopt
 ifeq ($(HOST_OS),linux)
