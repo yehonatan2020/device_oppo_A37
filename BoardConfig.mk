@@ -83,10 +83,7 @@ BOARD_LIBCUTILS_NO_STATIC_LIBLOG := true
 TARGET_LD_SHIM_LIBS := \
     /system/vendor/lib/libflp.so|libshims_flp.so \
     /system/vendor/lib/libizat_core.so|libshims_get_process_name.so \
-    /system/vendor/bin/mm-qcamera-daemon|libshim_atomic.so \
-    /system/vendor/lib/libmmcamera2_imglib_modules.so|libshim_atomic.so \
-    /system/vendor/lib/libqomx_jpegenc.so|libshim_atomic.so \
-    /system/vendor/lib/libmmcamera2_stats_modules.so|libshim_atomic.so
+    /system/vendor/lib/hw/camera.vendor.msm8916.so|libshims_camera_parameters.so
 
 # Qualcomm support
 BOARD_USES_QCOM_HARDWARE := true
@@ -149,9 +146,9 @@ TARGET_HAVE_SIGNED_VENUS_FW := true
 TARGET_USES_MEDIA_EXTENSIONS := true
 
 # Camera
-BOARD_CAMERA_SENSORS := imx219_q8n13a gc2355_8916
-TARGET_USE_VENDOR_CAMERA_EXT := true
-USE_DEVICE_SPECIFIC_CAMERA := true
+BOARD_GLOBAL_CFLAGS += -DCAMERA_VENDOR_L_COMPAT
+TARGET_HAS_LEGACY_CAMERA_HAL1 := true
+TARGET_NEEDS_LEGACY_CAMERA_HAL1_DYN_NATIVE_HANDLE := true
 
 # GPS
 TARGET_NO_RPC := true
