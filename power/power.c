@@ -17,7 +17,7 @@
 
 #include <hardware/hardware.h>
 #include <hardware/power.h>
-
+#include <unistd.h>
 #include <errno.h>
 #include <fcntl.h>
 #include <string.h>
@@ -25,7 +25,8 @@
 
 #include <utils/Log.h>
 
-#define TAP_TO_WAKE_NODE "/sys/android_touch/doubletap2wake"
+#define DOUBLE_TAP_FILE "/sys/kernel/touchscreen/double_tap_enable"
+#define DOUBLE_TAP_FILE_ALT "/proc/touchpanel/double_tap_enable"
 
 static pthread_mutex_t lock = PTHREAD_MUTEX_INITIALIZER;
 
@@ -67,14 +68,13 @@ static void power_init(__attribute__((unused)) struct power_module *module)
     ALOGI("%s", __func__);
 }
 
-static void set_feature(struct power_module *module __unused,
-                feature_t feature, int state)
-{
-    char tmp_str[64];
+void set_feature(struct power_module __unused *module, feature_t feature, int state) {
     if (feature == POWER_FEATURE_DOUBLE_TAP_TO_WAKE) {
-        snprintf(tmp_str, 64, "%d", state);
-        sysfs_write_str(TAP_TO_WAKE_NODE, tmp_str);
-    }
+        if (access(DOUBLE_TAP_FILE, F_OK) == 0) {
+            sysfs_write(DOUBLE_TAP_FILE, state ? "1" : "0");
+        } else if (access(DOUBLE_TAP_FILE_ALT, F_OK) == 0) {
+            sysfs_write(DOUBLE_TAP_FILE_ALT, state ? "1" : "0");
+        }
 }
 
 static int power_open(const hw_module_t* module, const char* name,
