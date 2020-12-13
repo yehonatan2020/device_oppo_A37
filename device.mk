@@ -137,7 +137,7 @@ PRODUCT_COPY_FILES += \
    $(LOCAL_PATH)/audio/acdbdata/QRD/QRD_General_cal.acbd:system/etc/acdbdata/QRD/QRD_General_cal.acbd \
    $(LOCAL_PATH)/audio/acdbdata/QRD/QRD_Global_cal.acbd:system/etc/acdbdata/QRD/QRD_Global_cal.acbd \
    $(LOCAL_PATH)/audio/acdbdata/QRD/QRD_Handset_cal.acbd:system/etc/acdbdata/QRD/QRD_Handset_cal.acbd \
-   $(LOCAL_PATH)/audio/acdbdata/QRD/QRD_Hdmi_cal.acbd:system/etc/acdbdata/QRD/QRD_Hdmi_cal.acbd \ 
+   $(LOCAL_PATH)/audio/acdbdata/QRD/QRD_Hdmi_cal.acbd:system/etc/acdbdata/QRD/QRD_Hdmi_cal.acbd \
    $(LOCAL_PATH)/audio/audio_platform_info.xml:$(TARGET_COPY_OUT_VENDOR)/etc/audio_platform_info.xml \
    $(LOCAL_PATH)/audio/mixer_paths.xml:$(TARGET_COPY_OUT_VENDOR)/etc/mixer_paths.xml \
    $(LOCAL_PATH)/audio/mixer_paths_mtp.xml:$(TARGET_COPY_OUT_VENDOR)/etc/mixer_paths_mtp.xml \
